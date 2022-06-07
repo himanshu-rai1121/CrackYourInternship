@@ -27,11 +27,17 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-   int MissingNumber(int array[], int n) {
-       // Your Code Here
-       int counter = 0, sum = 0; 
-       for(int element : array) sum+=element;
-       while(n>0) counter += n--;
-       int diff = counter - sum; 
-       return diff;
-   }}
+    int MissingNumber(int array[], int n) {
+        int sum=0;
+       for(int i=1;i<=n;i++)
+       {
+           sum=sum+i;
+       }
+       int sum2=0;
+       for(int i=0;i<n-1;i++)
+       {
+           sum2=sum2+array[i];
+       }
+       return sum-sum2;
+    }
+}
