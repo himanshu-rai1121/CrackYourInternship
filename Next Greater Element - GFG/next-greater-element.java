@@ -34,29 +34,51 @@ class Solution
     //Function to find the next greater element for each element of the array.
     public static long[] nextLargerElement(long[] arr, int n)
     { 
-        // Your code here
-        long[] ar = new long[n];
+        
+        long[] ans = new long[n];
         Stack<Long> st = new Stack<>();
         for(int i=n-1;i>=0;i--)
         {
             if(st.isEmpty())
-                ar[i]=-1l;
-            else if(!st.isEmpty()  && st.peek()>arr[i])
-                ar[i]=st.peek();
+                ans[i]=-1l;
+            else if(arr[i]<st.peek())
+                ans[i]=st.peek();
             else
             {
-                while(!st.isEmpty() && st.peek()<=arr[i])
+                while(!st.isEmpty()&&arr[i]>=st.peek())
                     st.pop();
                 if(st.isEmpty())
-                    ar[i]=-1l;
+                    ans[i]=-1l;
                 else
-                    ar[i]=st.peek();
+                    ans[i]=st.peek();
             }
             st.push(arr[i]);
         }
+        return ans;
+        
+        // Your code here
+        // long[] ar = new long[n];
+        // Stack<Long> st = new Stack<>();
+        // for(int i=n-1;i>=0;i--)
+        // {
+        //     if(st.isEmpty())
+        //         ar[i]=-1l;
+        //     else if(!st.isEmpty()  && st.peek()>arr[i])
+        //         ar[i]=st.peek();
+        //     else
+        //     {
+        //         while(!st.isEmpty() && st.peek()<=arr[i])
+        //             st.pop();
+        //         if(st.isEmpty())
+        //             ar[i]=-1l;
+        //         else
+        //             ar[i]=st.peek();
+        //     }
+        //     st.push(arr[i]);
+        // }
         
         
         
-        return ar;
+        // return ar;
     } 
 }
