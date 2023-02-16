@@ -25,69 +25,37 @@ class Main {
 
 
 class Solution{
+
     
     static int maxIndexDiff(int A[], int N) { 
         
-        // Your code here
-        int left[]=new int[N];
-        int right[]=new int[N];
+        int[] left_min = new int[N];
+        int[] right_mx = new int[N];
+        
         int max=A[N-1],min=A[0];
         for(int i=0;i<N;i++)
         {
             min=Math.min(min,A[i]);
-            left[i]=min;
+            left_min[i]=min;
         }
-        
-         for(int i=N-1;i>=0;i--)
+        for(int i=N-1;i>=0;i--)
         {
             max=Math.max(max,A[i]);
-            right[i]=max;
+            right_mx[i]=max;
         }
-        int i=0,j=0,ans=0;
-        while(i<N && j<N)
+        int i=0,j=0,ans = 0;
+        while(i<N&&j<N)
         {
-            if(left[i]<=right[j])
+            if(right_mx[j]>=left_min[i])
             {
-                ans=Math.max(ans,j-i);
+                ans = Math.max(ans, j-i);
                 j++;
             }
             else
-            i++;
+                i++;
         }
         return ans;
-        
     }
-
-    
-    // static int maxIndexDiff(int A[], int N) { 
-        
-    //     int[] left_min = new int[N];
-    //     int[] right_mx = new int[N];
-        
-    //     int max=A[N-1],min=A[0];
-    //     for(int i=0;i<N;i++)
-    //     {
-    //         min=Math.min(min,A[i]);
-    //         left_min[i]=min;
-    //     }
-    //     for(int i=0;i<N;i++)
-    //     {
-    //         max=Math.max(max,A[i]);
-    //         right_mx[i]=max;
-    //     }
-    //     int i=0,j=0,ans = 0;
-    //     while(i<N&&j<N)
-    //     {
-    //         if(right_mx[j]>=left_min[i])
-    //         {
-    //             ans = Math.max(ans, j-i);
-    //             j++;
-    //         }
-    //         else
-    //             i++;
-    //     }
-    //     return ans;
-    // }
 }
 
 
