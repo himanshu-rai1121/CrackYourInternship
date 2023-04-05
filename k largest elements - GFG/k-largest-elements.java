@@ -49,7 +49,7 @@ class Solution {
         for(int i=0;i<k;i++)
             ans[i] = pq.poll();
             
-        PriorityQueue<Integer> pp = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> pp = new PriorityQueue<>((a,b)->{return b-a;});
         for(int i=0;i<k;i++)
             pp.add(ans[i]);
             
