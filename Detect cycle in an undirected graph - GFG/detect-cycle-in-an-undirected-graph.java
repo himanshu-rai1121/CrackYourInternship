@@ -38,11 +38,11 @@ class Pair{
     {
         this.first = i;
         this.second = j;
-    }
+    } 
 }
 class Solution {
     // Function to detect cycle in an undirected graph.
-    public boolean check(int node,int v, ArrayList<ArrayList<Integer>> adj, boolean[] vis)
+    public boolean check_bfs(int node,int v, ArrayList<ArrayList<Integer>> adj, boolean[] vis)
     {
         vis[node] = true;
         Queue<Pair> q = new LinkedList<>();
@@ -76,7 +76,7 @@ class Solution {
         
         for(int i=0;i<V;i++)
             if(vis[i]==false)
-                if(check(i, V, adj, vis))
+                if(check_bfs(i, V, adj, vis))
                     return true;
         return false;
     }
