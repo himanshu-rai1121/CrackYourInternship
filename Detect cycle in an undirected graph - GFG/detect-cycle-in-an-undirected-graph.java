@@ -31,6 +31,7 @@ class GFG {
 }
 // } Driver Code Ends
 
+/*
 class Pair{
     int first;
     int second;
@@ -79,5 +80,36 @@ class Solution {
                 if(check_bfs(i, V, adj, vis))
                     return true;
         return false;
+    }
+}*/
+class Solution {
+    public boolean check_dfs(int node, int par, boolean[] vis, ArrayList<ArrayList<Integer>> adj)
+    {
+        vis[node] = true;
+        for(Integer adjacentnode : adj.get(node))
+        {
+            if(!vis[adjacentnode])
+            {
+                if(check_dfs(adjacentnode, node, vis, adj)==true)
+                    return true;
+            }
+            else if(adjacentnode!=par)
+                return true;
+        }
+        return false;
+    }
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        // Code here
+        
+        boolean [] vis = new boolean[V];
+        Arrays.fill(vis, false);
+        for(int i=0;i<V;i++)
+        {
+            if(vis[i] == false)
+                if(check_dfs(i, -1, vis, adj)==true)
+                    return true;
+        }
+        return false;
+        
     }
 }
