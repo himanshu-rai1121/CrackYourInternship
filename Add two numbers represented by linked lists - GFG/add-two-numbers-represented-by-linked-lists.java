@@ -76,59 +76,164 @@ class Node {
 }
 
 */
-
 class Solution{
-    //Function to add two numbers represented by linked list.
-    static Node reverse(Node root)
+    
+    static Node reverse(Node node)
     {
-        Node curr = root;
+        Node curr = node;
         Node prev = null;
         Node next = null;
-        if(root!=null)
-        next = root.next;
+        if(node!=null)
+            next = node.next;
+        
         while(curr!=null)
         {
             curr.next = prev;
             prev = curr;
-            curr=next;
+            curr = next;
             if(curr!=null)
-                next=next.next;
+                next = next.next;
         }
         return prev;
     }
-    
+    // static Node reverse(Node root)
+    // {
+    //     Node curr = root;
+    //     Node prev = null;
+    //     Node next = null;
+    //     if(root!=null)
+    //         next = root.next;
+    //     while(curr!=null)
+    //     {
+    //         curr.next = prev;
+    //         prev = curr;
+    //         curr=next;
+    //         if(curr!=null)
+    //             next=next.next;
+    //     }
+    //     return prev;
+    // }
     static Node addTwoLists(Node first, Node second){
-        // code here
-        // return head of sum list
-        
         first = reverse(first);
         second = reverse(second);
-        // return second;
+        // return first;
+        
+        Node ans = new Node(0);
+        Node str = ans;
         
         int rem = 0;
-        Node ans =new Node(0);
-        Node as = ans;
-        while(first!=null || second!=null || rem!=0 )
+        while(first!=null || second!=null)
         {
-            
-            int f = first!=null ? first.data : 0;
-            int s = second!=null ? second.data : 0;
-            int i = f+s+rem;
-            rem = i/10;
-            i=i%10;
-            Node temp = new Node(i);
-            ans.next = temp;
-            ans=ans.next;
-            if(first!=null)
-                first=first.next;
-            if(second!=null)
+            if(first!=null && second!=null)
+            {
+                int sum = first.data + second.data + rem;
+                rem = sum/10;
+                sum = sum%10;
+                
+                Node temp = new Node(sum);
+                ans.next = temp;
+                ans = ans.next;
+                first = first.next;
                 second = second.next;
-            
+            }
+            else if(first!=null)
+            {
+                int sum = first.data + rem;
+                rem = sum/10;
+                sum = sum%10;
+                
+                Node temp = new Node(sum);
+                ans.next = temp;
+                ans = ans.next;
+                first = first.next;
+            }
+            else
+            {
+                int sum = second.data  + rem;
+                rem = sum/10;
+                sum = sum%10;
+                
+                Node temp = new Node(sum);
+                ans.next = temp;
+                ans = ans.next;
+                second = second.next;
+            }
         }
-        return reverse(as.next);
-        
+        if(rem!=0)
+        {
+            Node temp = new Node(rem);
+            ans.next = temp;
+            ans = ans.next;
+        }
+        return reverse(str.next);
         
         
         
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+// class Solution{
+//     //Function to add two numbers represented by linked list.
+//     static Node reverse(Node root)
+//     {
+//         Node curr = root;
+//         Node prev = null;
+//         Node next = null;
+//         if(root!=null)
+//             next = root.next;
+//         while(curr!=null)
+//         {
+//             curr.next = prev;
+//             prev = curr;
+//             curr=next;
+//             if(curr!=null)
+//                 next=next.next;
+//         }
+//         return prev;
+//     }
+    
+//     static Node addTwoLists(Node first, Node second){
+//         // code here
+//         // return head of sum list
+        
+//         first = reverse(first);
+//         second = reverse(second);
+//         // return second;
+        
+//         int rem = 0;
+//         Node ans =new Node(0);
+//         Node as = ans;
+//         while(first!=null || second!=null || rem!=0 )
+//         {
+            
+//             int f = first!=null ? first.data : 0;
+//             int s = second!=null ? second.data : 0;
+//             int i = f+s+rem;
+//             rem = i/10;
+//             i=i%10;
+//             Node temp = new Node(i);
+//             ans.next = temp;
+//             ans=ans.next;
+//             if(first!=null)
+//                 first=first.next;
+//             if(second!=null)
+//                 second = second.next;
+            
+//         }
+//         return reverse(as.next);
+        
+        
+        
+        
+//     }
+// }
