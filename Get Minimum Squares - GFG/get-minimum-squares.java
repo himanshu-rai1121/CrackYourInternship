@@ -49,19 +49,41 @@ class Solution
             return dp[n];
         int ans = n;
         for(int i=1;i*i<=n;i++)
-        {
-            ans = Math.min(ans, 1+solvedp(n-(i*i), dp) );
+        { 
+            int temp = i*i;
+            ans = Math.min(ans, 1+solvedp(n-temp, dp) );
         }
         dp[n] = ans;
         return ans;
     }
+    
+    int solvetab(int n)
+    {
+        int[] dp = new int[n+1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j*j<=n;j++)
+            {
+                int temp = j*j;
+                if(i-temp>=0)
+                    dp[i] = Math.min(dp[i], 1+dp[i-temp] );
+            }
+        }
+        return dp[n];
+    }
+    
     public int MinSquares(int n)
     {
         // Code here
         // return solve(n);
         
-        int[] dp = new int[n+1];
-        Arrays.fill(dp, -1);
-        return solvedp(n, dp);
+        // int[] dp = new int[n+1];
+        // Arrays.fill(dp, -1);
+        // return solvedp(n, dp);
+        
+        return solvetab(n);
     }
 }
