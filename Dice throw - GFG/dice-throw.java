@@ -47,34 +47,62 @@ class Solution {
     //     return ans;
     // }
     
-    static long solvedp(int dice, int faces, int target, long[][] dp)
-    {
-        if(target<0)
-            return 0;
-        if(dice==0 && target!=0)
-            return 0;
-        if(target==0 && dice!=0)
-            return 0;
-        if(target==0 && dice==0)
-            return 1;
+    // static long solvedp(int dice, int faces, int target, long[][] dp)
+    // {
+    //     if(target<0)
+    //         return 0;
+    //     if(dice==0 && target!=0)
+    //         return 0;
+    //     if(target==0 && dice!=0)
+    //         return 0;
+    //     if(target==0 && dice==0)
+    //         return 1;
            
-        if(dp[dice][target]!=-1)
-            return dp[dice][target];
-        long ans = 0;
-        for(int i=1;i<=faces;i++)
+    //     if(dp[dice][target]!=-1)
+    //         return dp[dice][target];
+    //     long ans = 0;
+    //     for(int i=1;i<=faces;i++)
+    //     {
+    //         ans+=solvedp(dice-1, faces, target-i, dp);
+    //     }
+    //     dp[dice][target] = ans;
+    //     return dp[dice][target];
+    // }
+    
+    static long solvetab(int d, int faces, int t)
+    {
+        long[][] dp =new long[d+1][t+1];
+        
+        dp[0][0] = 1;
+        
+        
+        for(int dice=1;dice<=d;dice++)
         {
-            ans+=solvedp(dice-1, faces, target-i, dp);
+            for(int target=1;target<=t;target++)
+            {
+                long ans = 0;
+                for(int i=1;i<=faces;i++)
+                {
+                    if(target-i>=0)
+                    ans+=dp[dice-1][target-i];
+                }
+                dp[dice][target] = ans;
+                
+            }
         }
-        dp[dice][target] = ans;
-        return dp[dice][target];
+        return dp[d][t];
+        
+        
     }
     
     static long noOfWays(int M , int N , int X) {
         // return solve(N, M, X);
         
-        long[][] dp =new long[N+1][X+1];
-        for(int i=0;i<=N;i++)
-            Arrays.fill(dp[i], -1L);
-        return solvedp(N, M, X, dp);
+        // long[][] dp =new long[N+1][X+1];
+        // for(int i=0;i<=N;i++)
+        //     Arrays.fill(dp[i], -1L);
+        // return solvedp(N, M, X, dp);
+        
+        return solvetab(N, M, X);
     }
 };
