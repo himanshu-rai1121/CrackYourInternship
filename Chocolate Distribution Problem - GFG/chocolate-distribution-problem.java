@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.io.*;
@@ -28,7 +28,8 @@ class GfG
         }
         
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -39,23 +40,16 @@ class Solution
     {
         // your code here
         Collections.sort(a);
-        int min=a.get(n-1),diff=0;
-        for(int i=0;i<n;i++)
+        int i=0;
+        int min = Integer.MAX_VALUE;
+        while(m<=n)
         {
-            if(i+m>n)
-                break;
-            else
-            {
-                // diff=a[i+m-1]-a[i];
-                diff=a.get(i+m-1)-a.get(i);
-                if(diff<min)
-                min=diff;
-                
-            }
+            int diff = a.get(m-1) - a.get(i);
+            if(diff<min)
+                min = diff;
+            m++;
+            i++;
         }
-        
-        // long p=4l;
         return min;
     }
-    
 }
