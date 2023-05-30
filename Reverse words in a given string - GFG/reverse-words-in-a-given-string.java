@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -15,8 +15,8 @@ class GFG {
         }
     }
 }
-// } Driver Code Ends
 
+// } Driver Code Ends
 
 
 
@@ -25,27 +25,19 @@ class Solution
     //Function to reverse words in a given string.
     String reverseWords(String S)
     {
-        // code here
-        
-        int p=S.length();
-        String sub="";
-        String ans="";
-        int pos=p;
-        for(int i=p-1;i>=0;i--)
+        // code here 
+        int n = S.length();
+        String ans = "";
+        for(int i=n-1;i>=0;i--)
         {
-            if(S.charAt(i)=='.')
-            {
-                sub=S.substring(i+1,pos);
-                pos=i;
-                ans=ans+sub;
-                ans=ans+".";
-            }
+            int j = i;
+            while(i!=-1 && S.charAt(i)!='.')
+                i--;
+            String sub = S.substring(i+1, j+1);
+            ans+=sub;
+            if(i!=-1)
+                ans+='.';
         }
-        sub=S.substring(0,pos);
-        ans=ans+sub;
-        
         return ans;
-        
-        
     }
 }
