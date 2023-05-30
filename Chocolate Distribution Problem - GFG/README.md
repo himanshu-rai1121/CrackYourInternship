@@ -1,7 +1,6 @@
 # Chocolate Distribution Problem
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array <strong>A[ ]</strong> of positive integers of size <strong>N</strong>, where each value represents the number of chocolates in a packet. Each packet can have a variable number of chocolates. There are <strong>M</strong> students, the task is to distribute chocolate packets among <strong>M</strong> students&nbsp;such that :</span><br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array <strong>A[ ]</strong> of positive integers of size <strong>N</strong>, where each value represents the number of chocolates in a packet. Each packet can have a variable number of chocolates. There are <strong>M</strong> students, the task is to distribute chocolate packets among <strong>M</strong> students&nbsp;such that :</span><br>
 <span style="font-size:18px">1. Each student gets <strong>exactly</strong> one packet.<br>
 2. The difference between maximum number of chocolates given to a student and minimum&nbsp;number of chocolates given to a student is minimum.</span></p>
 
@@ -39,5 +38,4 @@ You don't need to take any input or print anything. Your task is to complete the
 1&nbsp;≤&nbsp;N&nbsp;≤&nbsp;10<sup>5</sup><br>
 1 ≤&nbsp;A<sub>i</sub> ≤&nbsp;10<sup>9</sup><br>
 1 ≤&nbsp;M ≤&nbsp;N</span></p>
- <p></p>
-            </div>
+</div>
